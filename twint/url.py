@@ -12,9 +12,9 @@ def _sanitizeQuery(base,params):
 
 def _formatDate(date):
     try:
-        return datetime.datetime.strptime(date, "%Y-%m-%d %H:%M:%S").strftime('%s')
+        return str(datetime.datetime.strptime(date, "%Y-%m-%d").timestamp()).split('.')[0]
     except ValueError:
-        return datetime.datetime.strptime(date, "%Y-%m-%d").strftime('%s')
+        return str(datetime.datetime.strptime(date, "%Y-%m-%d").timestamp()).split('.')[0]
 
 async def Favorites(username, init):
     logme.debug(__name__+':Favorites')
